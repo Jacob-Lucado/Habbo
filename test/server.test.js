@@ -268,3 +268,13 @@ test('hotel data survives a restart', () => {
     assert.ok(reopened.findUserByName('Alice'));
     assert.ok(reopened.findRoomsByOwner(reopened.findUserByName('Alice').id).length === 1);
 });
+
+test('the data file never contains a usable ticket and is owner-only', () => {
+    hotel.createUser('Ivy');
+    const ticket = hotel.issueTicket('Ivy');
+    const onDisk = fs.readFileSync(dataFile, 'utf8');
+    assert.ok(!onDisk.includes(ticket), 'raw ticket should not be written to disk');
+    if (process.platform !== 'win32') {
+        assert.strictEqual(fs.statSync(dataFile).mode & 0o077, 0, 'file should not be readable by others');
+    }
+});
