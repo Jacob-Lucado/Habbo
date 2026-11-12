@@ -73,3 +73,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Hotel data (accounts, rooms, login tickets)
+data

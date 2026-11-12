@@ -1,0 +1,8 @@
+This server is built on the Habbo Node.js emulator by Jaden Mitchell
+(https://github.com/jadenmitchell/Habbo), Copyright 2016 Jaden M., used under
+the Apache License 2.0 (see LICENSE).
+
+Changes from that version: the Sequelize/Postgres/MySQL layer was replaced with
+a JSON file store, incoming packets are now framed properly across TCP chunks,
+and a handful of startup and login bugs were fixed. Files that kept the original
+header are still covered by the original copyright.
